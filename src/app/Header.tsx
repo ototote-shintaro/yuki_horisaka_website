@@ -13,13 +13,13 @@ const Header = () => {
 					</h1>
 					<ul className='flex flex-auto justify-center gap-12'>
 						<li>
-							Home
+							<Link href='/'>Home</Link>
 						</li>
 						<li>
 							Schedule
 						</li>
 						<li>
-							Profile
+						<Link href='/profile'>Profile</Link>
 						</li>
 						<li>
 							Music
