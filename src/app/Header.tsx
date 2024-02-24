@@ -19,7 +19,7 @@ const Header = () => {
 							Schedule
 						</li>
 						<li>
-						<Link href='/profile'>Profile</Link>
+							<Link href='/profile'>Profile</Link>
 						</li>
 						<li>
 							Music
