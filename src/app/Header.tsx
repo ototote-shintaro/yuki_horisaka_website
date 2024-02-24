@@ -30,13 +30,13 @@ const Header = () => {
 							<Link href='/profile'>Profile</Link>
 						</li>
 						<li className={`${isActive('/music')}`}>
-							Music
+							<Link href='/music'>Music</Link>
 						</li>
 						<li className={`${isActive('/discography')}`}>
-							Discography
+							<Link href='/discography'>Discography</Link>
 						</li>
 						<li className={`${isActive('/contact')}`}>
-							Contact
+							<Link href='/contact'>Contact</Link>
 						</li>
 						<li>
 							Shop
