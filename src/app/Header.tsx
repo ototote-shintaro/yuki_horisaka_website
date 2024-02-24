@@ -1,7 +1,15 @@
-import Link from 'next/link'
+"use client";
+
 import React from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const Header = () => {
+	const pathname = usePathname()
+	const isActive = (path: string) => {
+		return pathname === path ? 'text-blue-700' : 'text-black';
+	};
+
 	return (
 		<header>
 			<div className='hidden md:block'>
@@ -12,22 +20,22 @@ const Header = () => {
 						</Link>
 					</h1>
 					<ul className='flex flex-auto justify-center gap-12'>
-						<li>
+						<li className={`${isActive('/')}`}>
 							<Link href='/'>Home</Link>
 						</li>
-						<li>
-							Schedule
+						<li className={`${isActive('/schedule')}`}>
+							<Link href='/schedule'>Schedule</Link>
 						</li>
-						<li>
+						<li className={`${isActive('/profile')}`}>
 							<Link href='/profile'>Profile</Link>
 						</li>
-						<li>
+						<li className={`${isActive('/music')}`}>
 							Music
 						</li>
-						<li>
+						<li className={`${isActive('/discography')}`}>
 							Discography
 						</li>
-						<li>
+						<li className={`${isActive('/contact')}`}>
 							Contact
 						</li>
 						<li>
