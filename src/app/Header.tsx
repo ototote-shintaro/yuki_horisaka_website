@@ -3,6 +3,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 
 const Header = () => {
 	const pathname = usePathname()
@@ -42,6 +44,14 @@ const Header = () => {
 							Shop
 						</li>
 					</ul>
+					<div className='flex gap-4 mr-24'>
+						<Link href={"https://www.instagram.com/yuki_horisaka/"} target='_blank' className='flex justify-center items-center'>
+							<FontAwesomeIcon icon={faInstagram} className='h-[20px] mr-2' />
+						</Link>
+						<Link href={"https://twitter.com/yuki_Qtarockets"} target='_blank' className='flex justify-center items-center'>
+							<FontAwesomeIcon icon={faXTwitter} className='h-[20px] mr-2' />
+						</Link>
+					</div>
 				</div>
 			</div>
 		</header>
