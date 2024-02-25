@@ -14,24 +14,14 @@ const images = [
 ];
 
 export default function BasicSlider() {
-	// ブレイクポイントに基づいて1つのスライドに表示するスライドの数を指定
-	const slideSettings = {
-		0: {
-			slidesPerView: 1.4,
-			spaceBetween: 10,
-		},
-		1024: {
-			slidesPerView: 2,
-			spaceBetween: 10,
-		},
-	};
-
 	return (
 		<Swiper
+			effect="fade"
+			fadeEffect={{
+				crossFade: true
+			}}
 			modules={[Navigation, Pagination, Autoplay]}
-			breakpoints={slideSettings}
-			slidesPerView={"auto"}
-			centeredSlides={true}
+			slidesPerView={1}
 			loop={true}
 			speed={1000}
 			autoplay={{
@@ -42,7 +32,7 @@ export default function BasicSlider() {
 			pagination={{
 				clickable: true,
 			}}
-			className='max-w-full'
+			className="max-w-full"
 		>
 			{images.map((src: string, index: number) => (
 				<SwiperSlide key={index}>
