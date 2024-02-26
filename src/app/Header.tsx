@@ -10,7 +10,7 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
 	const pathname = usePathname()
 	const isActive = (path: string) => {
-		return pathname === path ? 'text-blue-700' : 'text-black';
+		return pathname === path ? 'text-gray-500 font-bold' : 'text-black';
 	};
 
 	return (
