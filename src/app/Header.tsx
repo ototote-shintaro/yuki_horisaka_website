@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
 	const pathname = usePathname()
@@ -41,7 +42,9 @@ const Header = () => {
 							<Link href='/contact'>Contact</Link>
 						</li>
 						<li>
-							Shop
+							<Link href='https://yukihorisaka.booth.pm/' target='_blank'>
+								Shop <FontAwesomeIcon icon={faExternalLinkAlt} className='ml-1' />
+							</Link>
 						</li>
 					</ul>
 					<div className='flex gap-4 mr-24'>
