@@ -3,7 +3,7 @@ import React from 'react'
 
 const page = () => {
 	return (
-		<div className='mx-[24%]'>
+		<div className='mx-[24%] mt-8'>
 			<div className='pt-2 flex justify-center gap-12'>
 				<div className='flex flex-col'>
 					<h2 className='font-bold text-xl'>

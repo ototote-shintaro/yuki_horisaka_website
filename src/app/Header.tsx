@@ -10,7 +10,7 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
 	const pathname = usePathname()
 	const isActive = (path: string) => {
-		return pathname === path ? 'text-gray-500 font-bold' : 'text-black';
+		return pathname === path ? 'text-gray-500 font-bold' : 'text-black font-bold';
 	};
 
 	return (
@@ -41,9 +41,9 @@ const Header = () => {
 						<li className={`${isActive('/contact')}`}>
 							<Link href='/contact'>Contact</Link>
 						</li>
-						<li>
+						<li className='font-bold text-black'>
 							<Link href='https://yukihorisaka.booth.pm/' target='_blank'>
-								Shop <FontAwesomeIcon icon={faExternalLinkAlt} className='ml-1' />
+								Shop <FontAwesomeIcon icon={faExternalLinkAlt} className='h-[15px] ml-1' />
 							</Link>
 						</li>
 					</ul>
