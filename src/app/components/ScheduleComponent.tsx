@@ -14,7 +14,7 @@ type ScheduleComponentProps = {
 
 const ScheduleComponent = ({ imageUrl, imageAlt, dateTime, title, performers, place, price, memo }: ScheduleComponentProps) => {
 	return (
-		<div className='px-[28%] py-12 flex justify-start gap-24'>
+		<div className='pb-12 flex justify-start gap-24'>
 			<div className='flex flex-col'>
 				<span>{dateTime}</span>
 				<span className='text-lg font-bold text-gray-700 underline'>{title}</span>

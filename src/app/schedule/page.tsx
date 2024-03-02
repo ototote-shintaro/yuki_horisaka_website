@@ -4,7 +4,7 @@ import ScheduleComponent from '../components/ScheduleComponent'
 
 const page = () => {
 	return (
-		<div>
+		<div className='px-[28%] pt-12'>
 			<ScheduleComponent
 				imageUrl={'/20240407.jpg'}
 				imageAlt={'20240407'}
