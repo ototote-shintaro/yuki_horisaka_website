@@ -1,41 +1,41 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request, res: NextApiResponse) {
 	const sgMail = require('@sendgrid/mail');
 	const sgApiKey = process.env.SENDGRID_API_KEY;
 	sgMail.setApiKey(sgApiKey);
 
-	const { name, email, message } = req.body;
-	if (!name || !email || !message) {
-		return res.status(400).json({ message: "入力が不正です" });
+	const data = await req.json();
+	if (!data.name || !data.email || !data.message) {
+		return NextResponse.json({ message: "入力が不正です", status: 400 });
 	}
 
 	const agentEmail = process.env.AGENT_EMAIL;
+	const sgEmail = process.env.SG_EMAIL;
 
 	const msgToUser = {
-		to: email,
-		from: agentEmail,
+		to: data.email,
+		from: sgEmail,
 		subject: 'お問合せありがとうございました。',
-		text: 'お問合せを受け付けました。回答をお待ちください。' + req.body.message,
-		html: 'お問合せを受け付けました。回答をお待ちください。' + req.body.message,
+		text: 'お問合せを受け付けました。回答をお待ちください。\n\n' + data.message,
+		html: 'お問合せを受け付けました。回答をお待ちください。\n\n' + data.message,
 	};
 
 	const msgToAgent = {
 		to: agentEmail,
-		from: agentEmail,
+		from: sgEmail,
 		subject: 'お問合せがありました',
-		text: req.body.message,
-		html: req.body.message,
+		text: data.message,
+		html: data.message,
 	};
 
-	(async () => {
-		try {
-			await sgMail.send(msgToUser);
-			await sgMail.send(msgToAgent);
-			return res.status(200).json({ message: "送信しました" });
-		} catch (e) {
-			console.log(e);
-			return res.status(500).json({ message: "エラーが発生しました" });
-		}
-	})();
+	try {
+		await sgMail.send(msgToUser);
+		await sgMail.send(msgToAgent);
+		return NextResponse.json({ message: "送信しました", status: 200 });
+	} catch (e) {
+		console.log(e);
+		return NextResponse.json({ message: "エラーが発生しました", status: 500 });
+	};
 }

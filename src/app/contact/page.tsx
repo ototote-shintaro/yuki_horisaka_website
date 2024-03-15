@@ -27,10 +27,8 @@ const page = () => {
 			body: JSON.stringify({ name, email, message }),
 		});
 		if (response.status === 200) {
-			console.log('bbbb')
 			setLoading(false);
 		} else {
-			console.error(response);
 			alert("エラーが発生しました。各種SNSよりお問合せください");
 			setLoading(false);
 		}
