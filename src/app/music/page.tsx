@@ -76,6 +76,7 @@ const page = () => {
 			<div className='flex justify-center items-center pt-8'>
 				<Link
 					href='https://www.youtube.com/@kyuutarou0129/videos'
+					target='blank'
 					className='border rounded-full px-6 py-3 bg-gray-300 flex items-center'
 				>
 					Show All Videos
