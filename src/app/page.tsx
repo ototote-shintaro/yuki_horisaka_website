@@ -6,7 +6,7 @@ import Slider from "./components/Slider";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div className="mx-auto max-w-2xl pt-12">
+      <div className="mx-auto pt-12">
         <Slider />
       </div>
       <div className="pt-12 px-[30%] flex">
