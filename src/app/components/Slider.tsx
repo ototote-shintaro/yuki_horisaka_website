@@ -32,7 +32,7 @@ export default function BasicSlider() {
 			pagination={{
 				clickable: true,
 			}}
-			className="max-w-2xl max-h-96"
+			className="max-w-2xl max-h-96 z-5"
 		>
 			{images.map((src: string, index: number) => (
 				<SwiperSlide key={index}>
@@ -41,6 +41,7 @@ export default function BasicSlider() {
 						width={1024}
 						height={780}
 						alt="Slider Image"
+						className="z-5"
 					/>
 				</SwiperSlide>
 			))}

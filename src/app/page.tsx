@@ -6,12 +6,12 @@ import Slider from "./components/Slider";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <div className="mx-auto pt-12">
+      <div className="pt-12">
         <Slider />
       </div>
-      <div className="pt-12 px-[30%] flex">
+      <div className="pt-12 md:px-[30%] md:flex">
         <p className="text-2xl font-bold pr-4">Live</p>
-        <div className="border-l-2 border-black pl-4">
+        <div className="md:border-l-2 border-black pl-4">
           <ScheduleComponent
             imageUrl={'/20240407.jpg'}
             imageAlt={'20240407'}

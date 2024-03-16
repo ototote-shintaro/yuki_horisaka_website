@@ -82,7 +82,7 @@ const Header = () => {
 				</div>
 				<nav className={
 					isOpen
-						? 'bg-custom-pastel-pink fixed top-0 right-0 bottom-0 left-0 h-screen flex flex-col'
+						? 'bg-custom-pastel-pink fixed top-0 right-0 bottom-0 left-0 h-full flex flex-col z-30'
 						: 'fixed right-[-100%]'
 				}>
 					<ul className={
