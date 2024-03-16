@@ -10,7 +10,7 @@ export default function Home() {
         <Slider />
       </div>
       <div className="pt-12 md:px-[30%] md:flex">
-        <p className="text-2xl font-bold pr-4">Live</p>
+        <p className="text-2xl font-bold pr-4 text-center mb-4">Live</p>
         <div className="md:border-l-2 border-black pl-4">
           <ScheduleComponent
             imageUrl={'/20240407.jpg'}

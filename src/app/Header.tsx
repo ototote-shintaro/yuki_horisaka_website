@@ -90,25 +90,25 @@ const Header = () => {
 							? 'flex h-screen justify-center items-center flex-col gap-6 text-lg'
 							: 'block'
 					}>
-						<li>
+						<li className='font-bold'>
 							<Link onClick={handleMenuClose} href='/'>home</Link>
 						</li>
-						<li>
+						<li className='font-bold'>
 							<Link onClick={handleMenuClose} href='/schedule'>Schedule</Link>
 						</li>
-						<li>
+						<li className='font-bold'>
 							<Link onClick={handleMenuClose} href='/profile'>Profile</Link>
 						</li>
-						<li>
+						<li className='font-bold'>
 							<Link onClick={handleMenuClose} href='/music'>Music</Link>
 						</li>
-						<li>
+						<li className='font-bold'>
 							<Link onClick={handleMenuClose} href='/discography'>Discography</Link>
 						</li>
-						<li>
+						<li className='font-bold'>
 							<Link onClick={handleMenuClose} href='/contact'>Contact</Link>
 						</li>
-						<li>
+						<li className='font-bold'>
 							<Link
 								onClick={handleMenuClose}
 								href='https://yukihorisaka.booth.pm/'
