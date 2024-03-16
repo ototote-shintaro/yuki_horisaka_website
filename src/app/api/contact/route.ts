@@ -14,28 +14,26 @@ export async function POST(req: Request, res: NextApiResponse) {
 	const agentEmail = process.env.AGENT_EMAIL;
 	const sgEmail = process.env.SG_EMAIL;
 
-	const msgToUser = {
-		to: data.email,
-		from: sgEmail,
-		subject: 'お問合せありがとうございました。',
-		text: 'お問合せを受け付けました。回答をお待ちください。\n\n' + data.message,
-		html: 'お問合せを受け付けました。回答をお待ちください。\n\n' + data.message,
-	};
-
 	const msgToAgent = {
 		to: agentEmail,
 		from: sgEmail,
 		subject: 'お問合せがありました',
-		text: data.message,
-		html: data.message,
+		text: data.name + '様からお問い合わせがありました' + 'メッセージ:' + data.message + 'アドレス:' + data.email,
+		html: `
+			<p>【お名前】</p>
+			<p>${data.name}</p>
+			<p>【メールアドレス】</p>
+			<p>${data.email}</p>
+			<p>【メッセージ】</p>
+			<p>${data.message}</p>
+		`,
 	};
 
 	try {
-		await sgMail.send(msgToUser);
 		await sgMail.send(msgToAgent);
-		return NextResponse.json({ message: "送信しました", status: 200 });
+		return NextResponse.json({ message: "送信しました" }, { status: 200});
 	} catch (e) {
 		console.log(e);
-		return NextResponse.json({ message: "エラーが発生しました", status: 500 });
+		return NextResponse.json({ error: 'An error has occurred' }, { status: 500 })
 	};
 }

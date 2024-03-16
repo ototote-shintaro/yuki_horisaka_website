@@ -1,22 +1,28 @@
 "use client";
 
-import React, { useState } from 'react'
-
-type ContactFormProps = {
-	name: string
-	email: string
-	message: string
-}
+import React, { useEffect, useState } from 'react'
 
 const page = () => {
 	const [name, setName] = useState<string>("");
 	const [email, setEmail] = useState<string>("");
 	const [message, setMessage] = useState<string>("");
 	const [loading, setLoading] = useState<boolean>(false);
+	const [toast, setToast] = useState({ show: false, message: "" });
+
+	const showToast = (message: string) => {
+		setToast({ show: true, message });
+		setTimeout(() => setToast({ show: false, message: "" }), 5000);
+	};
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setLoading(true);
+
+		if (!validateEmail(email)) {
+			alert("メールアドレスを正しく入力してください");
+			setLoading(false);
+			return;
+		}
 
 		const API_URL = process.env.NEXT_PUBLIC_API_URL;
 		const response = await fetch(`${API_URL}/api/contact`, {
@@ -28,9 +34,14 @@ const page = () => {
 		});
 		if (response.status === 200) {
 			setLoading(false);
+			setName("");
+			setEmail("");
+			setMessage("");
+			showToast("お問い合わせを受け付けました / Your inquiry has been submitted!");
 		} else {
-			alert("エラーが発生しました。各種SNSよりお問合せください");
+			alert("エラーが発生しました。お手数ですが各種SNSよりお問合せください");
 			setLoading(false);
+			console.log(await response.json());
 		}
 	};
 
@@ -45,6 +56,7 @@ const page = () => {
 					placeholder="Name / お名前"
 					required
 					className="p-2 block w-full"
+					value={name}
 					onChange={(e) => setName(e.target.value)}
 				/>
 				<input
@@ -52,6 +64,7 @@ const page = () => {
 					placeholder="Email / メールアドレス"
 					required
 					className="p-2 block w-full"
+					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 				/>
 				<textarea
@@ -59,10 +72,12 @@ const page = () => {
 					rows={10}
 					required
 					className="p-2 block w-full"
+					value={message}
 					onChange={(e) => setMessage(e.target.value)}
 				/>
 				<button
 					type="submit"
+					disabled={loading}
 					className={`mt-4 px-4 py-2 text-white rounded hover:bg-blue-700
 						${loading
 							? "bg-blue-300 cursor-not-allowed"
@@ -73,8 +88,21 @@ const page = () => {
 					送信
 				</button>
 			</form>
+			{toast.show && (
+				<div style={{
+					position: 'absolute', bottom: '50px', left: '50%', transform: 'translateX(-50%)', fontSize: '18px',
+					backgroundColor: '#9295B3', color: 'white', padding: '15px', borderRadius: '5px',
+				}}>
+					{toast.message}
+				</div>
+			)}
 		</div>
 	)
 }
 
-export default page
+export default page;
+
+function validateEmail(email: string) {
+	var regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+	return regex.test(email);
+};
