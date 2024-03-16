@@ -5,7 +5,7 @@ import DiscComponent from '../components/DiscComponent'
 
 const page = () => {
 	return (
-		<>
+		<div className='md:px-[30%]'>
 			<DiscComponent
 				path={'discography/thinking-about-you'}
 				src={'/moon_boat_cover.jpg'}
@@ -24,7 +24,7 @@ const page = () => {
 				alt={'moon_boat_sails'}
 				title={'静かの基地 「つきのふね」'}
 			/>
-		</>
+		</div>
 	)
 }
 

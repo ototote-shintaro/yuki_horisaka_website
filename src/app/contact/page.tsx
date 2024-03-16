@@ -46,7 +46,7 @@ const page = () => {
 	};
 
 	return (
-		<div className='mt-12 flex flex-col justify-start items-center h-screen'>
+		<div className='mx-6 mt-12 flex flex-col justify-start items-center h-screen'>
 			<form
 				className='flex flex-col gap-4 w-full max-w-2xl mx-auto'
 				onSubmit={handleSubmit}
@@ -89,10 +89,13 @@ const page = () => {
 				</button>
 			</form>
 			{toast.show && (
-				<div style={{
-					position: 'absolute', bottom: '50px', left: '50%', transform: 'translateX(-50%)', fontSize: '18px',
-					backgroundColor: '#9295B3', color: 'white', padding: '15px', borderRadius: '5px',
-				}}>
+				<div
+					style={{
+						position: 'absolute', bottom: '50px', left: '50%', transform: 'translateX(-50%)', fontSize: '18px',
+						backgroundColor: '#9295B3', color: 'white', padding: '15px', borderRadius: '5px',
+					}}
+					className='w-4/5 md:w-fit'
+				>
 					{toast.message}
 				</div>
 			)}

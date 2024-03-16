@@ -30,7 +30,7 @@ export async function POST(req: Request, res: NextApiResponse) {
 	};
 
 	try {
-		await sgMail.send(msgToAgent);
+		// await sgMail.send(msgToAgent);
 		return NextResponse.json({ message: "送信しました" }, { status: 200});
 	} catch (e) {
 		console.log(e);

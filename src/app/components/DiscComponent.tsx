@@ -11,7 +11,7 @@ type DiscComponentProps = {
 
 const DiscComponent = ({ path, src, alt, title }: DiscComponentProps) => {
 	return (
-		<div className='px-[28%] mt-12 flex justify-start gap-12'>
+		<div className='mt-12 flex flex-col items-center md:flex md:flex-row md:items-start md:justify-start md:gap-12'>
 			<Link href={path} className='hover:opacity-75'>
 				<Image
 					src={src}
