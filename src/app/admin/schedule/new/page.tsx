@@ -115,7 +115,7 @@ const CreateArticle = () => {
 				{imageUrl &&
 					<Image
 						className='py-2'
-						src={imageUrl || ''}
+						src={imageUrl}
 						alt=''
 						width='500'
 						height='400'
