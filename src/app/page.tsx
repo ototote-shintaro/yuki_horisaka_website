@@ -13,23 +13,15 @@ export default function Home() {
         <p className="text-2xl font-bold pr-4 text-center mb-4">Live</p>
         <div className="md:border-l-2 border-black pl-4">
           <ScheduleComponent
-            imageUrl={'/20240407.jpg'}
-            imageAlt={'20240407'}
-            dateTime={'2024.4.7sun 19:30start'}
+            date={new Date('2024-04-07')}
+            imageUrl={'/20240306.jpg'}
             title={'まあるい集まり'}
-            performers={'満月カルテット/毛玉'}
-            place={'大久保ひかりのうま'}
-            price={'予約2,500円/当日3,000円 +1drink'}
             memo={'予約:~~~'}
           />
           <ScheduleComponent
+            date={new Date('2024-04-07')}
             imageUrl={'/20240306.jpg'}
-            imageAlt={'20240407'}
-            dateTime={'2024.4.7sun 19:30start'}
             title={'まあるい集まり'}
-            performers={'満月カルテット/毛玉'}
-            place={'大久保ひかりのうま'}
-            price={'予約2,500円/当日3,000円 +1drink'}
             memo={'予約:~~~'}
           />
         </div>
