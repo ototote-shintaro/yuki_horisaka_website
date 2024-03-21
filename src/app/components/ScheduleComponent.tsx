@@ -9,17 +9,17 @@ type ScheduleComponentProps = {
 }
 
 const dateOptions: Intl.DateTimeFormatOptions = {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric'
 };
 
 export const scheduleOption = { dateOptions };
 
 const ScheduleComponent = ({ date, title, memo, imageUrl }: ScheduleComponentProps) => {
 	return (
-		<div className='pb-12 flex flex-col md:flex-row items-center md:items-start justify-start gap-3 md:gap-24'>
-			<div className='flex flex-col'>
+		<div className='pb-12 flex flex-col md:flex-row items-center md:items-start justify-start gap-3 md:gap-14'>
+			<div className='flex flex-col w-3/5'>
 				<span className='text-center md:text-start'>{new Date(date).toLocaleDateString('ja-JP', scheduleOption.dateOptions)}</span>
 				<span className='text-lg font-bold text-gray-700 underline text-center md:text-start'>{title}</span>
 				<span className='hidden md:block'>{parseTextWithLinks(memo)}</span>
@@ -47,15 +47,15 @@ function replaceLineBreaks(text: string) {
 }
 
 function parseTextWithLinks(text: string) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  return text.split(urlRegex).map((part, index) => {
-    if (part.match(urlRegex)) {
-      return (
-        <a key={index} href={part} target="_blank" rel="noopener noreferrer" className='text-blue-500'>
-          {part}
-        </a>
-      );
-    }
-    return replaceLineBreaks(part);
-  });
+	const urlRegex = /(https?:\/\/[^\s]+)/g;
+	return text.split(urlRegex).map((part, index) => {
+		if (part.match(urlRegex)) {
+			return (
+				<a key={index} href={part} target="_blank" rel="noopener noreferrer" className='text-blue-500'>
+					{part}
+				</a>
+			);
+		}
+		return replaceLineBreaks(part);
+	});
 }

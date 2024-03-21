@@ -6,7 +6,7 @@ export async function GET(req: Request, res: NextApiResponse) {
 	const { data, error } = await supabase
 		.from('schedules')
 		.select('*')
-		.order('created_at', { ascending: false })
+		.order('date', { ascending: false })
 		.limit(12)
 
 	if (error) {
@@ -25,11 +25,12 @@ export async function POST(req: Request, res: NextApiResponse) {
 		password: AuthPw,
 	})
 
-	const { id, title, content, imageUrl } = await req.json();
+	const { date, title, memo, image_url } = await req.json();
+	const timestamp = new Date().toISOString();
 
 	const { data, error } = await supabase
-		.from('posts').insert([{
-			id, title, content, createdAt: new Date().toISOString(), imageUrl
+		.from('schedules').insert([{
+			date, title, memo, image_url, created_at: timestamp, updated_at: timestamp
 		}]);
 
 	if (error) {

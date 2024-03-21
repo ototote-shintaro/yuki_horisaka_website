@@ -1,19 +1,33 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import ScheduleComponent from "./components/ScheduleComponent";
 import Slider from "./components/Slider";
 import { Schedule } from "./utils/types";
 
-export default async function Home() {
+export default function Home() {
   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/schedule`
-  const res = await fetch(url, {
-    cache: 'no-store',
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  });
-  if (!res.ok) throw new Error('Failed to fetch data')
-  const schedules: Schedule[] = await res.json()
+  const [schedules, setSchedules] = useState<Schedule[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(url, {
+        cache: 'no-store',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch data');
+      }
+
+      const fetchedSchedules: Schedule[] = await res.json();
+      setSchedules(fetchedSchedules)
+    };
+
+    fetchData();
+  }, [url]);
 
   return (
     <main className="min-h-screen">
