@@ -47,6 +47,7 @@ const page = () => {
 
 	return (
 		<div className='mx-6 mt-12 flex flex-col justify-start items-center h-screen'>
+			<span className='mb-2'>出演依頼などは各種SNSのDMでも承ります。お気軽にご連絡ください</span>
 			<form
 				className='flex flex-col gap-4 w-full max-w-2xl mx-auto'
 				onSubmit={handleSubmit}
