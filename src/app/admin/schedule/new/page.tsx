@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, useState } from 'react'
 
-const CreateArticle = () => {
+const CreateSchedule = () => {
 	const router = useRouter();
 	const [date, setDate] = useState<string>("");
 	const [title, setTitle] = useState<string>("");
@@ -127,4 +127,4 @@ const CreateArticle = () => {
 	)
 }
 
-export default CreateArticle;
+export default CreateSchedule;
