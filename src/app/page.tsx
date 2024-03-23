@@ -6,7 +6,7 @@ import Slider from "./components/Slider";
 import { Schedule } from "./utils/types";
 
 export default function Home() {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/schedule`
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/schedule/latest`
   const [schedules, setSchedules] = useState<Schedule[]>([]);
 
   useEffect(() => {
