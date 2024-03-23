@@ -22,7 +22,7 @@ const ScheduleComponent = ({ date, title, memo, imageUrl }: ScheduleComponentPro
 			<div className='flex flex-col w-3/5'>
 				<span className='text-center md:text-start'>{new Date(date).toLocaleDateString('ja-JP', scheduleOption.dateOptions)}</span>
 				<span className='text-lg font-bold text-gray-700 underline text-center md:text-start'>{title}</span>
-				<span className='hidden md:block'>{parseTextWithLinks(memo)}</span>
+				<span className='hidden md:block'>{replaceLineBreaksAndParseTextWithLinks(memo)}</span>
 			</div>
 			<Image
 				src={imageUrl}
@@ -37,25 +37,22 @@ const ScheduleComponent = ({ date, title, memo, imageUrl }: ScheduleComponentPro
 
 export default ScheduleComponent
 
-function replaceLineBreaks(text: string) {
+function replaceLineBreaksAndParseTextWithLinks(text: string) {
+	const urlRegex = /(https?:\/\/[^\s]+)/g;
 	return text.split('\n').map((line, index) => (
 		<span key={index}>
-			{line}
+			{line.split(urlRegex).map((part, idx) => {
+				if (part.match(urlRegex)) {
+					return (
+						<a key={idx} href={part} target="_blank" rel="noopener noreferrer" className='text-blue-500 cursor-pointer'>
+							{part}
+						</a>
+					);
+				} else {
+					return part;
+				}
+			})}
 			<br />
 		</span>
 	));
-}
-
-function parseTextWithLinks(text: string) {
-	const urlRegex = /(https?:\/\/[^\s]+)/g;
-	return text.split(urlRegex).map((part, index) => {
-		if (part.match(urlRegex)) {
-			return (
-				<a key={index} href={part} target="_blank" rel="noopener noreferrer" className='text-blue-500'>
-					{part}
-				</a>
-			);
-		}
-		return replaceLineBreaks(part);
-	});
 }

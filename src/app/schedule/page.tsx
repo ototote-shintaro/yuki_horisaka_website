@@ -5,7 +5,7 @@ import { headers } from 'next/headers';
 import { Schedule } from "../utils/types";
 
 export default async function Schedule() {
-	const url = `${process.env.NEXT_PUBLIC_API_URL}/api/schedule`
+	const url = `${process.env.NEXT_PUBLIC_API_URL}/api/schedule`;
 	const res = await fetch(url, {
 		cache: 'no-store',
 		headers: Object.fromEntries(headers())

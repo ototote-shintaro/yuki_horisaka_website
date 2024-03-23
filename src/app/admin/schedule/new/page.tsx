@@ -29,7 +29,7 @@ const CreateSchedule = () => {
 
 		setLoading(false);
 
-		router.push('/');
+		router.push('/schedule');
 		router.refresh();
 	};
 
@@ -56,7 +56,7 @@ const CreateSchedule = () => {
 
 	return (
 		<div className='min-h-screen px-4 md:px-[15%]'>
-			<h2 className='text-2xl font-bold mb-4 '>新規作成</h2>
+			<h2 className='text-2xl font-bold mb-4 '>スケジュール新規作成</h2>
 			<form
 				className='bg-slate-200 p-6 rounded shadow-lg'
 				onSubmit={handleSubmit}
