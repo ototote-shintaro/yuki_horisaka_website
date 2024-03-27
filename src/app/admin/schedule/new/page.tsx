@@ -13,6 +13,8 @@ const CreateSchedule = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [imageUrl, setImageUrl] = useState<string>("");
 
+	const isDisabled = loading || (date === "" || memo === "" || imageUrl === "" || title === "")
+
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -45,13 +47,15 @@ const CreateSchedule = () => {
 			.upload(filePath, file)
 
 		if (error) {
-			// TODO::error handling
-			console.log(error);
+			if (error.error === 'Duplicate' && error.statusCode === '409') {
+				alert("その画像はすでにアップロードされています");
+			}
 			return;
 		}
 
 		const { data } = supabase.storage.from('schedule_image').getPublicUrl(filePath)
 		setImageUrl(data.publicUrl);
+		console.log()
 	}
 
 	return (
@@ -114,11 +118,11 @@ const CreateSchedule = () => {
 				}
 				<button
 					type='submit'
-					className={`px-4 py-2 border rounded-md ${loading || !(date && memo && imageUrl && title)
+					className={`px-4 py-2 border rounded-md ${ isDisabled
 						? "bg-orange-200 cursor-not-allowed text-slate-400"
 						: "bg-orange-400 hover:bg-orange-500"
 						}`}
-					disabled={loading || !(date && memo && imageUrl && title)}
+					disabled={isDisabled}
 				>
 					投稿
 				</button>

@@ -25,12 +25,12 @@ export async function POST(req: Request, res: NextApiResponse) {
 		password: AuthPw,
 	})
 
-	const { date, title, memo, image_url } = await req.json();
+	const { date, title, memo, imageUrl } = await req.json();
 	const timestamp = new Date().toISOString();
 
 	const { data, error } = await supabase
 		.from('schedules').insert([{
-			date, title, memo, image_url, created_at: timestamp, updated_at: timestamp
+			date, title, memo, image_url: imageUrl, created_at: timestamp, updated_at: timestamp
 		}]);
 
 	if (error) {
